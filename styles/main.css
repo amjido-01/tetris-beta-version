@@ -1,0 +1,57 @@
+::after,
+::before,
+ * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    box-sizing: inherit;
+    background-color: #b2bbd3;
+}
+
+.container {
+    display: flex;
+    border: 1px solid red;
+}
+
+#start-btn {
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #d05663;
+    width: 200px;
+    height: 400px;
+}
+
+.grid div {
+    width: 20px;
+    height: 20px;
+    /* background-color: orangered; */
+}
+
+.tetromino {
+    background-color: #fedd89;
+}
+
+/* .taken {
+    background-color: red;
+} */
+
+.mini-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80px;
+    height: 80px;
+    background-color: #d05663;
+    margin-left: 20px;
+}
+
+.mini-grid div {
+    width: 20px;
+    height: 20px;
+}
