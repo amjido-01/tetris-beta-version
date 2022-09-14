@@ -13,6 +13,17 @@ body {
 
 .control {
     border: 1px solid green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options {
+    /* color: #0d6efd; */
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
 }
 .container {
     display: flex;
