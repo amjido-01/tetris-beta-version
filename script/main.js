@@ -1,5 +1,6 @@
 // const { default: Swal } = require("sweetalert2");
-
+import {Howl, Howler} from 'howler';
+// const { Howl } = require('howler');
 // variable that hold the whole grid container
 const grid = document.querySelector(`.grid`);
 // variable that get all the divs inside the grid container
@@ -23,11 +24,11 @@ const colors = [
     'gray'
 ]
 
-squares.forEach(index => {
-    if (index.classList.contains(`taken`)) {
-        index.style.background = `black`
-    }
-})
+// squares.forEach(index => {
+//     if (index.classList.contains(`taken`)) {
+//         index.style.background = `black`
+//     }
+// })
 
 // variable that hold the display scores
 const displayScore = document.querySelector(`#scores`);
@@ -148,6 +149,7 @@ function stopAtTheBottom() {
     // and if true convert the whole current variable into a class of taken
     if (current.some(index => squares[currentPosition + index + width].classList.contains(`taken`))) {
         current.forEach(index => squares[currentPosition + index].classList.add(`taken`))
+        current.forEach(index => squares[currentPosition + index].style.background = 'black')
         // draw anothe random shape
         random = nextRandom
         nextRandom = Math.floor(Math.random() * theTetrominoes.length)
@@ -239,7 +241,21 @@ function displayShapes() {
     })
 }
 
-let seconds = 1000 
+// var sound = Howl({
+//     src: ['sound/05 The One.mp3'],
+//     format: ['mp3']
+// });
+  
+// sound.play();
+// let seconds = 1000 
+
+const sound = new Howl({
+    src:['../sound.mp3']
+});
+
+sound.play()
+
+Howler.volume(0.5)
 
 startBtn.addEventListener(`click`, () => {
     if (timerId) {
@@ -247,6 +263,7 @@ startBtn.addEventListener(`click`, () => {
         timerId = null
     } else {
         draw()
+       
         timerId = setInterval(moveDown, seconds)
         console.log(seconds)
         nextRandom = Math.floor(Math.random() * theTetrominoes.length)
