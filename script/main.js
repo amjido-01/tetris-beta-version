@@ -1,5 +1,5 @@
 // const { default: Swal } = require("sweetalert2");
-import {Howl, Howler} from 'howler';
+// import {Howl, Howler} from 'howler';
 // const { Howl } = require('howler');
 // variable that hold the whole grid container
 const grid = document.querySelector(`.grid`);
@@ -247,20 +247,32 @@ function displayShapes() {
 // });
   
 // sound.play();
-// let seconds = 1000 
+let seconds = 1000 
 
-const sound = new Howl({
-    src:['../sound.mp3']
-});
+// const sound = new Howl({
+//     src:['../sound.mp3']
+// });
 
-sound.play()
+// sound.play()
 
-Howler.volume(0.5)
+// Howler.volume(0.5)
+
+// function sounds(src) {
+//     let audio = document.createElement(`audio`);
+//     audio.src = src;
+//     audio.volume = 0.5;
+//     // return audio
+// };
+
+var audio = new Audio();
+audio.src = `sound.mp3`
+
 
 startBtn.addEventListener(`click`, () => {
     if (timerId) {
         clearInterval(timerId)
         timerId = null
+        audio.pause()
     } else {
         draw()
        
@@ -268,6 +280,7 @@ startBtn.addEventListener(`click`, () => {
         console.log(seconds)
         nextRandom = Math.floor(Math.random() * theTetrominoes.length)
         displayShapes()
+        audio.play()
     }
 })
 
