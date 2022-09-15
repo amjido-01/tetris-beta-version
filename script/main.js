@@ -17,9 +17,9 @@ let timerId;
 
 // tetrominoes colors
 const colors = [
-    'green',
-    'blue',
-    'yellow',
+    '#d05663',
+    '#f0ad4e',
+    'black',
     'purple',
     'gray'
 ]
@@ -149,7 +149,7 @@ function stopAtTheBottom() {
     // and if true convert the whole current variable into a class of taken
     if (current.some(index => squares[currentPosition + index + width].classList.contains(`taken`))) {
         current.forEach(index => squares[currentPosition + index].classList.add(`taken`))
-        current.forEach(index => squares[currentPosition + index].style.background = 'black')
+        // current.forEach(index => squares[currentPosition + index].style.background = 'black')
         // draw anothe random shape
         random = nextRandom
         nextRandom = Math.floor(Math.random() * theTetrominoes.length)
@@ -257,16 +257,8 @@ let seconds = 1000
 
 // Howler.volume(0.5)
 
-// function sounds(src) {
-//     let audio = document.createElement(`audio`);
-//     audio.src = src;
-//     audio.volume = 0.5;
-//     // return audio
-// };
 
-// var audio = new Audio();
-// audio.src = `Fluffing-a-Duck.mp3`
-// audio.loop = true;
+
 
 function playSound(src) {
     var audio = document.createElement(`audio`);
@@ -275,24 +267,22 @@ function playSound(src) {
     return audio;
 }
 
+
+
 startBtn.addEventListener(`click`, () => {
     if (timerId) {
         clearInterval(timerId)
         timerId = null
-        let playItOnPause = playSound(`sound.mp3`);
-        playItOnPause.play()
-        playIt.pause()
-        // audio.pause()
+        // playIt.pause()
     } else {
         draw()
         timerId = setInterval(moveDown, seconds)
         console.log(seconds)
         nextRandom = Math.floor(Math.random() * theTetrominoes.length)
         displayShapes()
-        // audio.play()
-        var playIt = playSound('Fluffing-a-Duck.mp3')
-        playIt.play()
-        console.log(playIt)
+        let playIt = playSound(`sound2.mp3`)
+        // playIt.play()
+
     }
 })
 

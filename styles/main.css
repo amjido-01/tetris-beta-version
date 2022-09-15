@@ -12,10 +12,17 @@ body {
 }
 
 .control {
-    border: 1px solid green;
+    border: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media screen  and (min-width: 400px) {
+    .control {
+        display: flex;
+        justify-content: space-evenly;
+    }
 }
 
 .options {
@@ -37,7 +44,7 @@ body {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    background-color: #d05663;
+    background-color: #0275d8;
     width: 200px;
     height: 400px;
 }
@@ -61,7 +68,7 @@ body {
     flex-wrap: wrap;
     width: 80px;
     height: 80px;
-    background-color: #d05663;
+    background-color: #0275d8;
     margin-left: 20px;
 }
 
