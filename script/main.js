@@ -264,23 +264,35 @@ let seconds = 1000
 //     // return audio
 // };
 
-var audio = new Audio();
-audio.src = `sound.mp3`
+// var audio = new Audio();
+// audio.src = `Fluffing-a-Duck.mp3`
+// audio.loop = true;
 
+function playSound(src) {
+    var audio = document.createElement(`audio`);
+    audio.loop = true;
+    audio.src = src;
+    return audio;
+}
 
 startBtn.addEventListener(`click`, () => {
     if (timerId) {
         clearInterval(timerId)
         timerId = null
-        audio.pause()
+        let playItOnPause = playSound(`sound.mp3`);
+        playItOnPause.play()
+        playIt.pause()
+        // audio.pause()
     } else {
         draw()
-       
         timerId = setInterval(moveDown, seconds)
         console.log(seconds)
         nextRandom = Math.floor(Math.random() * theTetrominoes.length)
         displayShapes()
-        audio.play()
+        // audio.play()
+        var playIt = playSound('Fluffing-a-Duck.mp3')
+        playIt.play()
+        console.log(playIt)
     }
 })
 
