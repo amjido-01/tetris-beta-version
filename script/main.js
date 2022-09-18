@@ -1,6 +1,9 @@
 // const { default: Swal } = require("sweetalert2");
 // import {Howl, Howler} from 'howler';
 // const { Howl } = require('howler');
+
+// const { default: Swal } = require("sweetalert2");
+
 // variable that hold the whole grid container
 const grid = document.querySelector(`.grid`);
 // variable that get all the divs inside the grid container
@@ -12,6 +15,9 @@ const width = 10;
 let nextRandom = 0
 // the score variabe
 let score = 0;
+
+let levelUp = 1
+
 // time id variable
 let timerId;
 
@@ -23,6 +29,10 @@ const colors = [
     'purple',
     'gray'
 ]
+
+const btnSettings = document.querySelector(`#setting`);
+const cancelBtn = document.querySelector(`#cancel-btn`)
+
 
 // squares.forEach(index => {
 //     if (index.classList.contains(`taken`)) {
@@ -267,25 +277,65 @@ function playSound(src) {
     return audio;
 }
 
+// btn.addEventListener(`click`, () => {
+//     if(timerId) {
+//         clearInterval(timerId);
+//         timerId = null
+//     }
+// })
 
+function motion() {
+    draw();
+    timerId = setInterval(moveDown, seconds);
+    nextRandom = Math.floor(Math.random() * theTetrominoes.length)
+    displayShapes()
+}
 
-startBtn.addEventListener(`click`, () => {
+function btnFunction() {
     if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+        // sweet alert need
+        alert('paused')
+        motion()
+    } else {
+        motion()
+    }
+};
+
+btnSettings.addEventListener(`click`, () => {
+    if(timerId) {
         clearInterval(timerId)
         timerId = null
-        // playIt.pause()
     } else {
-        draw()
-        timerId = setInterval(moveDown, seconds)
-        console.log(seconds)
-        nextRandom = Math.floor(Math.random() * theTetrominoes.length)
-        displayShapes()
-        let playIt = playSound(`sound2.mp3`)
-        // playIt.play()
-
+        // motion()
     }
 })
 
+// function btnSetFunction() {
+//     if (timerId) {
+//         draw();
+//         timerId = setInterval(moveDown, seconds)
+//         console.log(seconds)
+//         nextRandom = Math.floor(Math.random() * theTetrominoes.length);
+//         displayShapes()
+//     } else {
+//         clearInterval(timerId);
+//         timerId = null;
+//     }
+// };
+
+startBtn.addEventListener(`click`, btnFunction)
+cancelBtn.addEventListener(`click`, motion)
+
+
+let nextLevelAlert
+
+function nextAlert() {
+    levelUp ++
+    alert(`welcome to level ${levelUp}`)
+    motion()
+}
 
 function addScore() {
     for (let i = 0; i < 199; i +=width) {
@@ -303,6 +353,10 @@ function addScore() {
                 // timerId = null;
                 timerId = setInterval(moveDown, seconds)
                 console.log(seconds)
+                nextAlert();
+                clearInterval(nextAlert)
+                // levelUp ++
+                // alert(`welcome to level ${levelUp}`)
             }
             displayScore.innerHTML = score
 
