@@ -296,8 +296,15 @@ function btnFunction() {
         clearInterval(timerId);
         timerId = null;
         // sweet alert need
-        alert('paused')
-        motion()
+        Swal.fire({
+            title: 'Resume!',
+            icon: 'info'
+        }).then( (result) => {
+            if (result.isConfirmed) {
+                motion()
+            }
+        })
+        // motion()
     } else {
         motion()
     }
@@ -333,8 +340,34 @@ let nextLevelAlert
 
 function nextAlert() {
     levelUp ++
-    alert(`welcome to level ${levelUp}`)
-    motion()
+    let timerInterval
+
+    Swal.fire({
+        title: 'Auto close alert!',
+        html: `welcome to level <b></b>`,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            console.log(b)
+            timerInterval = setInterval(() => {
+            b.textContent = `${levelUp}`
+        }, 100)
+        clearInterval(timerId)
+        // motion()
+    },
+    willClose: () => {
+    clearInterval(timerInterval)
+  }
+    }).then((result) => {
+    /* Read more about handling dismissals below */
+    if (result.dismiss === Swal.DismissReason.timer) {
+    // console.log('I was closed by the timer')
+  }
+})
+    // alert(`welcome to level ${levelUp}`)
+    // motion()
 }
 
 function addScore() {
@@ -358,7 +391,7 @@ function addScore() {
                 // levelUp ++
                 // alert(`welcome to level ${levelUp}`)
             }
-            displayScore.innerHTML = score
+            displayScore.innerHTML = score;
 
             row.forEach(index => {
                 squares[index].classList.remove(`taken`)
@@ -389,8 +422,6 @@ function gameOver() {
         Swal.fire({
             title: 'Game Over!',
             text: `${createMessage()} ${score}`,
-            // icon: 'warning',
-            // showCancelButton: true,
             showDenyButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
@@ -398,11 +429,6 @@ function gameOver() {
           }).then((result) => {
             if (result.isConfirmed) {
                 document.location.reload()
-            //   Swal.fire(
-            //     'Deleted!',
-            //     'Your file has been deleted.',
-            //     'success'
-            //   )
             } else if (result.isDenied) {
                 Swal.fire({
                     icon: 'warning',
