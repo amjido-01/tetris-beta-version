@@ -21,6 +21,9 @@ let levelUp = 1
 // time id variable
 let timerId;
 
+let showLevel = document.querySelector(`#level`);
+console.log(showLevel)
+
 // tetrominoes colors
 const colors = [
     '#d05663',
@@ -338,6 +341,8 @@ cancelBtn.addEventListener(`click`, motion)
 
 let nextLevelAlert
 
+
+
 function nextAlert() {
     levelUp ++
     let timerInterval
@@ -353,6 +358,7 @@ function nextAlert() {
             console.log(b)
             timerInterval = setInterval(() => {
             b.textContent = `${levelUp}`
+            showLevel.innerHTML = levelUp
         }, 100)
         // clearInterval(timerId)
         // motion()
