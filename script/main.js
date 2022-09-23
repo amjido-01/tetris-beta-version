@@ -24,10 +24,10 @@ let timerId;
 // tetrominoes colors
 const colors = [
     '#d05663',
-    '#f0ad4e',
+    'gray',
     'black',
-    'purple',
-    'gray'
+    'blue',
+    'green'
 ]
 
 const btnSettings = document.querySelector(`#setting`);
@@ -354,7 +354,7 @@ function nextAlert() {
             timerInterval = setInterval(() => {
             b.textContent = `${levelUp}`
         }, 100)
-        clearInterval(timerId)
+        // clearInterval(timerId)
         // motion()
     },
     willClose: () => {

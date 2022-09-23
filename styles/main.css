@@ -11,15 +11,17 @@ body {
     background-color: #b2bbd3;
 }
 
-.control {
+.control-fluid {
+    /* background-color: black; */
     border: 1px solid black;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 @media screen  and (min-width: 400px) {
-    .control {
+    .control-fluid {
+        /* background-color: blue; */
         display: flex;
         justify-content: space-evenly;
         margin-top: 50px;
@@ -45,7 +47,8 @@ body {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    background-color: #0275d8;
+    background-color: #ff7733;
+    /* background-color: #0275d8; */
     width: 200px;
     height: 400px;
 }
@@ -64,12 +67,19 @@ body {
     background-color: red;
 } */
 
+.marks {
+    display: flex;
+    border: 1px solid black;
+    justify-content: space-between;
+}
+
 .mini-grid {
     display: flex;
     flex-wrap: wrap;
     width: 80px;
     height: 80px;
-    background-color: #0275d8;
+    background-color: #ff7733;
+    /* background-color: #0275d8; */
     margin-left: 20px;
 }
 
