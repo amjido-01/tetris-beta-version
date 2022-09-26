@@ -341,7 +341,7 @@ cancelBtn.addEventListener(`click`, motion)
 
 let nextLevelAlert
 
-
+levelUp = 1
 
 function nextAlert() {
     levelUp ++

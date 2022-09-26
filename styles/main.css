@@ -13,7 +13,7 @@ body {
 
 .control-fluid {
     /* background-color: black; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -37,7 +37,7 @@ body {
 }
 .container {
     display: flex;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 #start-btn {
@@ -69,7 +69,7 @@ body {
 
 .marks {
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     justify-content: space-between;
 }
 
@@ -82,6 +82,21 @@ body {
     /* background-color: #0275d8; */
     margin-left: 20px;
 }
+
+/* @media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      /* width: 80px; */
+      /* -webkit-appearance: none; */
+      /* background-color: #9a905d; */
+    /* }
+} */
+
+/* #range {
+    background-color: #ff7733;
+    color: #fedd89;
+} */
+
 
 .mini-grid div {
     width: 20px;
